@@ -1,0 +1,25 @@
+.c-Main-Header {
+    height: 70px;
+    background-color: aquamarine;
+    color: white;
+    font-size: 250%;
+    display: inline-flex;
+    width: 100%;
+}
+
+.anticon .anticon-bars {
+    width: 70px;
+    height: 70px;
+}
+
+.c-Header-Title {
+    padding: 10px;
+    margin-left: 45%;
+}
+
+.c-Header-Toggle {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+}

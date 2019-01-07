@@ -28,7 +28,7 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        logged: state.views.login.logged
+        logged: state.login.logged
     };
 }
 

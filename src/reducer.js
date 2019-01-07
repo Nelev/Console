@@ -6,8 +6,8 @@ import loginReducer from "./common/Login/reducer";
 
 export default combineReducers({
     form,
+    login: loginReducer,
     views: combineReducers({
-        routing: routerReducer,
-        login: loginReducer
+        routing: routerReducer
     })
 });
