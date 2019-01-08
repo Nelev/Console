@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import InputField from "../../components/fields/InputField";
+import InputField from "../../components/fields/InputField/index.jsx";
+import Button from "antd/lib/button";
 
 import "./style.css";
 
@@ -36,6 +37,7 @@ class LoginForm extends React.Component {
                         <button type="submit" disabled={pristine || submitting}>
                             Log-In
                         </button>
+                        <Button />
                     </div>
                 </form>
             </div>

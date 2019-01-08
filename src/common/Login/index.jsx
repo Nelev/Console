@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import { login } from "../../common/Login/actions";
 
-import LoginForm from "../../components/LoginForm";
+import LoginForm from "../../components/LoginForm/index.jsx";
 
 class Login extends React.Component {
     static propTypes = {
