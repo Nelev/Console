@@ -1,7 +1,10 @@
 import Icon from "antd/lib/icon";
 import Menu from "antd/lib/menu";
 import React from "react";
-import "./style.css";
+
+import "./style.less";
+
+export const menuSizes = { small: "SMALL", extended: "EXTENDED" };
 
 const resources = [
     { name: "Tickets", icon: "tags" },
@@ -10,20 +13,27 @@ const resources = [
 ];
 
 class SliderMenu extends React.Component {
+    renderMenuItem(resource) {
+        const { size } = this.props;
+        console.log(size);
+        return size === menuSizes.extended ? (
+            <span>{resource.name}</span>
+        ) : null;
+    }
+
     renderMenuItems() {
         const menuItems = resources.map((resource, index) => {
             return (
                 <Menu.Item key={index}>
                     <Icon type={resource.icon} />
-                    <span>{resource.name}</span>
+                    {this.renderMenuItem(resource)}
                 </Menu.Item>
             );
         });
-
         menuItems.unshift(
             <Menu.Item key={menuItems.length}>
                 <Icon type="area-chart" />
-                <span>DashBoard</span>
+                {this.renderMenuItem({ name: "DashBoard" })}
             </Menu.Item>
         );
         return menuItems;

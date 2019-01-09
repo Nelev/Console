@@ -4,6 +4,8 @@ import Icon from "antd/lib/icon";
 import SliderMenu from "../SliderMenu/index.jsx";
 import "./style.less";
 
+export const menuSizes = { small: "SMALL", extended: "EXTENDED" };
+
 class Header extends React.Component {
     state = { showMenu: false };
 
@@ -13,8 +15,10 @@ class Header extends React.Component {
 
     renderSlider() {
         return this.state.showMenu === true ? (
-            <SliderMenu show={this.state.showMenu} />
-        ) : null;
+            <SliderMenu show={this.state.showMenu} size={menuSizes.extended} />
+        ) : (
+            <SliderMenu show={this.state.showMenu} size={menuSizes.small} />
+        );
     }
 
     render() {

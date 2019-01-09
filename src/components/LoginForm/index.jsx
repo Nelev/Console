@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import InputField from "../../components/fields/InputField/index.jsx";
 import Button from "antd/lib/button";
 
-import "./style.css";
+import "./style.less";
 
 class LoginForm extends React.Component {
     render() {
@@ -35,6 +35,7 @@ class LoginForm extends React.Component {
                     </div>
                     <div>
                         <Button
+                            className="c-loginButton"
                             type="primary"
                             htmlType="submit"
                             disabled={pristine || submitting}
