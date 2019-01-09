@@ -25,9 +25,24 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.less$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    {
+                        loader: "less-loader",
+                        options: {
+                            javascriptEnabled: true,
+                            modifyVars: themeVariables,
+                            root: path.resolve(__dirname, "./")
+                        }
+                    }
+                ]
+            },
+            {
                 loader: "babel-loader",
                 exclude: /node_modules/,
-                test: [/\.js$/, /\.jsx$/],
+                test: /\.(js||jsx)$/,
                 options: {
                     cacheDirectory: true,
                     plugins: [
@@ -44,20 +59,6 @@ module.exports = {
             {
                 test: /\.png$/,
                 use: ["file"]
-            },
-            {
-                test: /\.less$/,
-                use: [
-                    { loader: "style-loader" },
-                    { loader: "css-loader" },
-                    {
-                        loader: "less-loader",
-                        options: {
-                            modifyVars: themeVariables,
-                            root: path.resolve(__dirname, "./")
-                        }
-                    }
-                ]
             }
         ]
     },

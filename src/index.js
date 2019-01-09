@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./common/Login/index.jsx";
 import Root from "./views/Root/index.jsx";
 
-import "./index.css";
+import "./index.less";
 import store from "./store";
 
 const App = (
