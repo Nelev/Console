@@ -34,10 +34,13 @@ class LoginForm extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <button type="submit" disabled={pristine || submitting}>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            disabled={pristine || submitting}
+                        >
                             Log-In
-                        </button>
-                        <Button type="primary" />
+                        </Button>
                     </div>
                 </form>
             </div>

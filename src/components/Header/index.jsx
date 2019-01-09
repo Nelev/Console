@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "antd/lib/icon";
 
 import SliderMenu from "../SliderMenu/index.jsx";
-import "./style.css";
+import "./style.less";
 
 class Header extends React.Component {
     state = { showMenu: false };
@@ -12,7 +12,9 @@ class Header extends React.Component {
     };
 
     renderSlider() {
-        return this.state.showMenu === true ? <SliderMenu /> : null;
+        return this.state.showMenu === true ? (
+            <SliderMenu show={this.state.showMenu} />
+        ) : null;
     }
 
     render() {
