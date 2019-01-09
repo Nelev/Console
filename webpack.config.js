@@ -1,4 +1,11 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const fs = require("fs");
+
+const lessToJs = require("less-vars-to-js");
+const themeVariables = lessToJs(
+    fs.readFileSync(path.join(__dirname, "./src/ant-theme-vars.less"), "utf8")
+);
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: "./public/index.html",
@@ -6,13 +13,28 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
+    context: __dirname,
+    entry: "./src/index.js",
+    output: {
+        filename: "bundle.js",
+        path: path.join(__dirname, "./")
+    },
+    resolve: {
+        modules: ["scripts", "node_modules"]
+    },
     module: {
         rules: [
             {
-                test: [/\.js$/, /\.jsx$/],
+                loader: "babel-loader",
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
+                test: [/\.js$/, /\.jsx$/],
+                options: {
+                    cacheDirectory: true,
+                    plugins: [
+                        ["import", { libraryName: "antd", style: true }],
+                        "transform-strict-mode",
+                        "transform-object-rest-spread"
+                    ]
                 }
             },
             {
@@ -25,15 +47,17 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                loader: "less-loader",
-                options: {
-                    modifyVars: {
-                        "primary-color": "black",
-                        "link-color": "#1DA57A",
-                        "border-radius-base": "2px"
-                    },
-                    javascriptEnabled: true
-                }
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    {
+                        loader: "less-loader",
+                        options: {
+                            modifyVars: themeVariables,
+                            root: path.resolve(__dirname, "./")
+                        }
+                    }
+                ]
             }
         ]
     },
