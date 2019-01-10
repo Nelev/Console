@@ -1,7 +1,9 @@
+import Button from "antd/lib/button";
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+
 import InputField from "../../components/fields/InputField/index.jsx";
-import Button from "antd/lib/button";
+import PasswordField from "../../components/fields/PasswordField/index.jsx";
 
 import "./style.less";
 
@@ -27,7 +29,7 @@ class LoginForm extends React.Component {
                         <div>
                             <Field
                                 name="password"
-                                component={InputField}
+                                component={PasswordField}
                                 type="text"
                                 placeholder="Password"
                             />

@@ -1,10 +1,10 @@
 import Icon from "antd/lib/icon";
 import Menu from "antd/lib/menu";
+import classNames from "classnames";
 import React from "react";
 
+import { menuSizes } from "../../common/commons.js";
 import "./style.less";
-
-export const menuSizes = { small: "SMALL", extended: "EXTENDED" };
 
 const resources = [
     { name: "Tickets", icon: "tags" },
@@ -15,7 +15,6 @@ const resources = [
 class SliderMenu extends React.Component {
     renderMenuItem(resource) {
         const { size } = this.props;
-        console.log(size);
         return size === menuSizes.extended ? (
             <span>{resource.name}</span>
         ) : null;
@@ -40,8 +39,9 @@ class SliderMenu extends React.Component {
     }
 
     render() {
+        const { size } = this.props;
         return (
-            <div className={"c-Slider-Menu"}>
+            <span className={classNames("c-Slider-Menu", size)}>
                 <Menu
                     defaultSelectedKeys={["1"]}
                     defaultOpenKeys={["sub1"]}
@@ -50,7 +50,7 @@ class SliderMenu extends React.Component {
                 >
                     {this.renderMenuItems()}
                 </Menu>
-            </div>
+            </span>
         );
     }
 }

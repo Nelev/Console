@@ -7,13 +7,15 @@ import { LOGIN_ERROR } from "./actions";
 const defaultState = {
     isLogging: false,
     errorLoggin: null,
-    logged: false
+    logged: false,
+    user: null
 };
 
 export const statePropType = {
     isLogging: PropTypes.bool,
     errorLogging: PropTypes.instanceOf(Error),
-    logged: false
+    logged: PropTypes.bool,
+    user: PropTypes.object
 };
 
 export default (state = defaultState, action) => {
@@ -23,19 +25,22 @@ export default (state = defaultState, action) => {
             return {
                 ...state,
                 isLogging: true,
-                errorLogging: null
+                errorLogging: null,
+                user: null
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 isLogging: false,
-                logged: true
+                logged: true,
+                user: payload
             };
         case LOGIN_ERROR:
             return {
                 ...state,
                 isLogging: false,
-                errorLogging: payload
+                errorLogging: payload,
+                user: null
             };
         default:
             return state;

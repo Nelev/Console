@@ -4,7 +4,7 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 
-export const login = () => async dispatch => {
+export const login = values => async dispatch => {
     try {
         dispatch({ type: LOGIN_START });
 
@@ -12,7 +12,7 @@ export const login = () => async dispatch => {
         // const { data } = await axios.get(`https://picsum.photos/list`);
         dispatch({
             type: LOGIN_SUCCESS,
-            payload: true
+            payload: values.username
         });
     } catch (err) {
         dispatch({

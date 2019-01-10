@@ -6,20 +6,29 @@ import { login } from "../../common/Login/actions";
 
 import LoginForm from "../../components/LoginForm/index.jsx";
 
+import "./style.less";
+
 class Login extends React.Component {
     static propTypes = {
         login: PropTypes.func.isRequired
     };
 
-    handleSubmit = () => {
+    handleSubmit = formValues => {
         const { login } = this.props;
-        login();
+        login(formValues);
     };
+
+    renderTitle() {
+        return <div className="c-Login-Title">t-Console</div>;
+    }
 
     render() {
         const { children } = this.props;
         return this.props.logged === false ? (
-            <LoginForm onSubmit={this.handleSubmit} />
+            <div>
+                {this.renderTitle()}
+                <LoginForm onSubmit={this.handleSubmit} />
+            </div>
         ) : (
             children
         );
@@ -28,7 +37,8 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        logged: state.login.logged
+        logged: state.login.logged,
+        user: state.login.user
     };
 }
 
