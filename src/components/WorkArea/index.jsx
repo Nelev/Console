@@ -4,7 +4,7 @@ import "./style.less";
 
 class WorkArea extends React.Component {
     render() {
-        return <span className="c-Work-Area">ciao</span>;
+        return <div className="c-Work-Area">ciao</div>;
     }
 }
 
