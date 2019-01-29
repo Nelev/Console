@@ -23,7 +23,7 @@ class SliderMenu extends React.Component {
     renderMenuItems() {
         const menuItems = resources.map((resource, index) => {
             return (
-                <Menu.Item key={index}>
+                <Menu.Item key={index} onClick={() => alert("clicked")}>
                     <Icon type={resource.icon} />
                     {this.renderMenuItem(resource)}
                 </Menu.Item>
