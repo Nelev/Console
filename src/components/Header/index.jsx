@@ -6,9 +6,15 @@ import "./style.less";
 
 class Header extends React.Component {
     static propTypes = {
-        handleMenuToggle: PropTypes.func,
+        handleMenuToggle: PropTypes.func.isRequired,
+        logout: PropTypes.func.isRequired,
         showMenu: PropTypes.bool,
-        user: PropTypes.string
+        user: PropTypes.string.isRequired
+    };
+
+    handleLogout = () => {
+        const { logout } = this.props;
+        logout();
     };
 
     renderWelcome() {
@@ -16,9 +22,12 @@ class Header extends React.Component {
         return (
             <div>
                 <span>
-                    Welcome <b>{user}</b>
+                    Welcome <b> {user} </b>
                 </span>
-                <span className="c-Header-Logout-Icon">
+                <span
+                    className="c-Header-Logout-Icon"
+                    onClick={this.handleLogout}
+                >
                     <Icon type="poweroff" />
                 </span>
             </div>
@@ -26,6 +35,7 @@ class Header extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         const { handleMenuToggle, showMenu } = this.props;
         return (
             <div className="c-Main-Header">

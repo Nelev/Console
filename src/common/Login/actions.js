@@ -4,6 +4,8 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 
+export const LOGOUT = "LOGOUT";
+
 export const login = values => async dispatch => {
     try {
         dispatch({ type: LOGIN_START });
@@ -21,3 +23,8 @@ export const login = values => async dispatch => {
         });
     }
 };
+
+export const logout = () => ({
+    type: LOGOUT,
+    payload: null
+});

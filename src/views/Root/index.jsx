@@ -2,17 +2,21 @@ import Row from "antd/lib/row";
 import React from "react";
 import { connect } from "react-redux";
 import { history } from "react-router-prop-types";
+import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
+
 import DashBoard from "../DashBoard/index.jsx";
 import Header from "../../components/Header/index.jsx";
 import SliderMenu from "../../components/SliderMenu/index.jsx";
 
+import { logout } from "../../common/Login/actions.js";
 import { menuSizes } from "../../common/commons.js";
 import "./style.less";
 
 class Root extends React.Component {
     static propTypes = {
         history: history.isRequired,
+        logout: PropTypes.func.isRequired,
         user: PropTypes.string
     };
 
@@ -49,7 +53,7 @@ class Root extends React.Component {
     }
 
     render() {
-        const { user } = this.props;
+        const { user, logout } = this.props;
         return (
             <div className="v-Root">
                 <Row>
@@ -57,6 +61,7 @@ class Root extends React.Component {
                         handleMenuToggle={this.handleMenuToggle}
                         showMenu={this.state.showMenu}
                         user={user}
+                        logout={logout}
                     />
                 </Row>
                 <Row>
@@ -76,7 +81,13 @@ function mapStateToProps(state) {
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        logout: bindActionCreators(logout, dispatch)
+    };
+}
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(Root);

@@ -4,6 +4,8 @@ import { LOGIN_START } from "./actions";
 import { LOGIN_SUCCESS } from "./actions";
 import { LOGIN_ERROR } from "./actions";
 
+import { LOGOUT } from "./actions";
+
 const defaultState = {
     isLogging: false,
     errorLoggin: null,
@@ -41,6 +43,13 @@ export default (state = defaultState, action) => {
                 isLogging: false,
                 errorLogging: payload,
                 user: null
+            };
+        case LOGOUT:
+            return {
+                ...state,
+                isLogging: false,
+                logged: false,
+                user: payload
             };
         default:
             return state;
