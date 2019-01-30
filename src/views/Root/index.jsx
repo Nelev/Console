@@ -45,11 +45,7 @@ class Root extends React.Component {
     }
 
     renderWorkAreaContent() {
-        return (
-            <div className="v-Workarea-Content">
-                <DashBoard />
-            </div>
-        );
+        return <div className="v-Workarea-Content" />;
     }
 
     render() {

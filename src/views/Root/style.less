@@ -7,7 +7,6 @@
 }
 
 .v-Sidebar {
-    height: 100%;
     margin-top: 100px;
 }
 .v-Workarea {
@@ -17,9 +16,21 @@
 
 .v-Workarea-Content {
     background-color: @main-panels-color;
-    width: calc(~"100% - 20%");
+    max-width: calc(~"100% - 20%");
+    max-height: calc(~"100% - 20%");
     margin-left: 20px;
     margin-right: 50px;
     border-radius: 4px;
     box-shadow: 0 0 3px grey;
+    min-width: calc(~"100% - 20%");
+    min-height: 500px;
+}
+
+@media only screen and (max-width: 620px) {
+    .v-Workarea {
+        display: block;
+    }
+    .v-Workarea-Content {
+        margin-top: 20px;
+    }
 }

@@ -13,7 +13,7 @@ class DashBoard extends React.Component {
     render() {
         return (
             <div className="v-DashBoard">
-                <svg width={400} height={400}>
+                <svg>
                     <VictoryAxis
                         crossAxis
                         width={400}

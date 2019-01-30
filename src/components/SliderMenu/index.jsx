@@ -23,12 +23,6 @@ class SliderMenu extends React.Component {
                 </Menu.Item>
             );
         });
-        menuItems.unshift(
-            <Menu.Item key={menuItems.length}>
-                <Icon type="area-chart" />
-                {this.renderMenuItem({ name: "DashBoard" })}
-            </Menu.Item>
-        );
         return menuItems;
     }
 
@@ -36,12 +30,7 @@ class SliderMenu extends React.Component {
         const { size } = this.props;
         return (
             <span className={classNames("c-Slider-Menu", size)}>
-                <Menu
-                    defaultSelectedKeys={["1"]}
-                    defaultOpenKeys={["sub1"]}
-                    mode="inline"
-                    theme="dark"
-                >
+                <Menu defaultSelectedKeys={["0"]} mode="inline" theme="dark">
                     {this.renderMenuItems()}
                 </Menu>
             </span>
