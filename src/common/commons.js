@@ -5,6 +5,6 @@ export const menuSizes = { small: "small", extended: "extended" };
 export const resources = [
     { name: "Dashboard", icon: "area-chart" },
     { name: "Tickets", icon: "tags" },
-    { name: "Costumers", icon: "smile" },
+    { name: "Customers", icon: "smile" },
     { name: "Companies", icon: "home" }
 ];

@@ -4,7 +4,10 @@ import { history } from "react-router-prop-types";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 
+import Companies from "../Companies/index.jsx";
+import Customers from "../Customers/index.jsx";
 import DashBoard from "../DashBoard/index.jsx";
+import Tickets from "../Tickets/index.jsx";
 import { resources } from "../../common/commons.js";
 import Header from "../../components/Header/index.jsx";
 import Profile from "../../components/Profile/index.jsx";
@@ -39,6 +42,28 @@ class Root extends React.Component {
         this.setState({ showProfile: !this.state.showProfile });
     };
 
+    renderCompanies() {
+        return this.state.currentResource === "Companies" ? (
+            <Companies />
+        ) : null;
+    }
+
+    renderCustomers() {
+        return this.state.currentResource === "Customers" ? (
+            <Customers />
+        ) : null;
+    }
+
+    renderDashboard() {
+        return this.state.currentResource === "Dashboard" ? (
+            <DashBoard />
+        ) : null;
+    }
+
+    renderTickets() {
+        return this.state.currentResource === "Tickets" ? <Tickets /> : null;
+    }
+
     renderProfile() {
         return this.state.showProfile === true ? (
             <Profile
@@ -48,7 +73,7 @@ class Root extends React.Component {
         ) : null;
     }
 
-    renderSliderMenu() {
+    renderSideMenu() {
         return this.state.showMenu === true ? (
             <SideMenu
                 show={this.state.showMenu}
@@ -64,10 +89,6 @@ class Root extends React.Component {
         );
     }
 
-    renderWorkAreaContent() {
-        return <div className="v-Workarea-Content" />;
-    }
-
     render() {
         const { user, logout } = this.props;
         return (
@@ -81,8 +102,13 @@ class Root extends React.Component {
                     resource={this.state.currentResource}
                 />
                 <div className="v-Workarea">
-                    {this.renderSliderMenu()}
-                    {this.renderWorkAreaContent()}
+                    <span>{this.renderSideMenu()}</span>
+                    <div className="v-Workarea-Content">
+                        {this.renderCompanies()}
+                        {this.renderCustomers()}
+                        {this.renderTickets()}
+                        {this.renderDashboard()}
+                    </div>
                     {this.renderProfile()}
                 </div>
             </div>
