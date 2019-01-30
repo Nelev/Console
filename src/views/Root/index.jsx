@@ -1,6 +1,8 @@
 import Row from "antd/lib/row";
 import React from "react";
-
+import { connect } from "react-redux";
+import { history } from "react-router-prop-types";
+import PropTypes from "prop-types";
 import DashBoard from "../DashBoard/index.jsx";
 import Header from "../../components/Header/index.jsx";
 import SliderMenu from "../../components/SliderMenu/index.jsx";
@@ -9,6 +11,11 @@ import { menuSizes } from "../../common/commons.js";
 import "./style.less";
 
 class Root extends React.Component {
+    static propTypes = {
+        history: history.isRequired,
+        user: PropTypes.string
+    };
+
     state = { showMenu: false, currentView: "DASHBOARD" };
 
     handleMenuClick = resource => {
@@ -42,20 +49,20 @@ class Root extends React.Component {
     }
 
     render() {
+        const { user } = this.props;
         return (
             <div className="v-Root">
                 <Row>
                     <Header
                         handleMenuToggle={this.handleMenuToggle}
                         showMenu={this.state.showMenu}
+                        user={user}
                     />
                 </Row>
                 <Row>
                     <div className="v-Workarea">
                         {this.renderSliderMenu()}
-                        <div className="v-Workarea-Content">
-                            {this.renderWorkAreaContent()}
-                        </div>
+                        {this.renderWorkAreaContent()}
                     </div>
                 </Row>
             </div>
@@ -63,4 +70,13 @@ class Root extends React.Component {
     }
 }
 
-export default Root;
+function mapStateToProps(state) {
+    return {
+        user: state.login.user
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    null
+)(Root);

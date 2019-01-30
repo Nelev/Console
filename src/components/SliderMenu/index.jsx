@@ -3,14 +3,8 @@ import Menu from "antd/lib/menu";
 import classNames from "classnames";
 import React from "react";
 
-import { menuSizes } from "../../common/commons.js";
+import { menuSizes, resources } from "../../common/commons.js";
 import "./style.less";
-
-const resources = [
-    { name: "Tickets", icon: "tags" },
-    { name: "Costumers", icon: "smile" },
-    { name: "Users", icon: "team" }
-];
 
 class SliderMenu extends React.Component {
     renderMenuItem(resource) {

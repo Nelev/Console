@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
 import React from "react";
+import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import { login } from "../../common/Login/actions";
@@ -10,7 +10,8 @@ import "./style.less";
 
 class Login extends React.Component {
     static propTypes = {
-        login: PropTypes.func.isRequired
+        login: PropTypes.func.isRequired,
+        user: PropTypes.string
     };
 
     handleSubmit = formValues => {

@@ -45,11 +45,7 @@ module.exports = {
                 test: /\.(js||jsx)$/,
                 options: {
                     cacheDirectory: true,
-                    plugins: [
-                        ["import", { libraryName: "antd", style: true }],
-                        "transform-strict-mode",
-                        "transform-object-rest-spread"
-                    ]
+                    plugins: [["import", { libraryName: "antd", style: true }]]
                 }
             },
             {

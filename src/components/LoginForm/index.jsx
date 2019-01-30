@@ -32,6 +32,9 @@ class LoginForm extends React.Component {
                                 component={PasswordField}
                                 type="text"
                                 placeholder="Password"
+                                {...{
+                                    disabled: true
+                                }}
                             />
                         </div>
                     </div>
