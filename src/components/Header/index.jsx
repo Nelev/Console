@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "antd/lib/icon";
 import PropTypes from "prop-types";
+import Tooltip from "antd/lib/tooltip";
 
 import "./style.less";
 
@@ -28,14 +29,15 @@ class Header extends React.Component {
                     className="c-Header-Logout-Icon"
                     onClick={this.handleLogout}
                 >
-                    <Icon type="poweroff" />
+                    <Tooltip title="logout">
+                        <Icon type="poweroff" />
+                    </Tooltip>
                 </span>
             </div>
         );
     }
 
     render() {
-        console.log(this.props);
         const { handleMenuToggle, showMenu } = this.props;
         return (
             <div className="c-Main-Header">

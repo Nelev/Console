@@ -1,21 +1,25 @@
 @import "../../index.less";
 
 .v-Root {
-    height: 100%;
+    overflow: scroll;
     background-color: @main-front-color;
+    height: 100%;
 }
 
-.v-Workarea {
-    display: flex;
+.v-Sidebar {
     height: 100%;
+    margin-top: 100px;
+}
+.v-Workarea {
+    margin-top: 100px;
+    display: inline-flex;
 }
 
 .v-Workarea-Content {
     background-color: @main-panels-color;
     width: calc(~"100% - 20%");
     margin-left: 20px;
-    margin-top: 20px;
     margin-right: 50px;
-    margin-bottom: 20px;
-    box-shadow: 2px 3px grey;
+    border-radius: 4px;
+    box-shadow: 0 0 3px grey;
 }

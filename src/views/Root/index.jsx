@@ -46,7 +46,7 @@ class Root extends React.Component {
 
     renderWorkAreaContent() {
         return (
-            <div>
+            <div className="v-Workarea-Content">
                 <DashBoard />
             </div>
         );
@@ -56,20 +56,16 @@ class Root extends React.Component {
         const { user, logout } = this.props;
         return (
             <div className="v-Root">
-                <Row>
-                    <Header
-                        handleMenuToggle={this.handleMenuToggle}
-                        showMenu={this.state.showMenu}
-                        user={user}
-                        logout={logout}
-                    />
-                </Row>
-                <Row>
-                    <div className="v-Workarea">
-                        {this.renderSliderMenu()}
-                        {this.renderWorkAreaContent()}
-                    </div>
-                </Row>
+                <Header
+                    handleMenuToggle={this.handleMenuToggle}
+                    showMenu={this.state.showMenu}
+                    user={user}
+                    logout={logout}
+                />
+                <div className="v-Workarea">
+                    {this.renderSliderMenu()}
+                    {this.renderWorkAreaContent()}
+                </div>
             </div>
         );
     }

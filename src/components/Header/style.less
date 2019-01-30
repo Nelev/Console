@@ -3,22 +3,25 @@
 .c-Main-Header {
     height: 60px;
     background-color: @main-bg-color;
-    color: white;
+    color: @main-text-color;
     width: 100%;
+    position: fixed;
+    top: 0;
 }
 
+.c-Header-Logout-Icon {
+    margin-left: 5px;
+    font-size: 130%;
+}
 .c-Header-Toggle {
     font-size: 300%;
     float: left;
-    position: absolute;
     margin-left: 10px;
 }
 
 .c-Header-Welcome {
     font-size: 120%;
     float: right;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin-right: 40px;
+    vertical-align: middle;
+    margin-right: 20px;
 }
