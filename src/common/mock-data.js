@@ -5,5 +5,6 @@ var faker = require("faker");
 export const userInfo = {
     name: faker.name.firstName(),
     surname: faker.name.lastName(),
-    address: { city: faker.address.city(), street: faker.address.streetName() }
+    address: { city: faker.address.city(), street: faker.address.streetName() },
+    company: { name: faker.company.companyName() }
 };
