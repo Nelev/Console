@@ -9,7 +9,8 @@ const themeVariables = lessToJs(
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: "./public/index.html",
-    filename: "./index.html"
+    filename: "./index.html",
+    favicon: "./public/favicon.ico"
 });
 
 module.exports = {
@@ -55,6 +56,10 @@ module.exports = {
             {
                 test: /\.png$/,
                 use: ["file"]
+            },
+            {
+                test: /favicon\.ico$/,
+                loader: "file?name=assets/icons/[name].[hash].[ext]"
             }
         ]
     },
