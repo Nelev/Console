@@ -1,4 +1,3 @@
-import Row from "antd/lib/row";
 import React from "react";
 import { connect } from "react-redux";
 import { history } from "react-router-prop-types";
@@ -6,8 +5,10 @@ import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 
 import DashBoard from "../DashBoard/index.jsx";
+import { resources } from "../../common/commons.js";
 import Header from "../../components/Header/index.jsx";
-import SliderMenu from "../../components/SliderMenu/index.jsx";
+import Profile from "../../components/Profile/index.jsx";
+import SideMenu from "../../components/SideMenu/index.jsx";
 
 import { logout } from "../../common/Login/actions.js";
 import { menuSizes } from "../../common/commons.js";
@@ -20,27 +21,46 @@ class Root extends React.Component {
         user: PropTypes.string
     };
 
-    state = { showMenu: false, currentView: "DASHBOARD" };
+    state = {
+        showMenu: false,
+        currentResource: "Dashboard",
+        showProfile: false
+    };
 
-    handleMenuClick = resource => {
-        switch (resource) {
-            case "case 1": {
-                return 1;
-            }
-            default:
-                return;
-        }
+    handleMenuClick = key => {
+        this.setState({ currentResource: resources[key].name });
     };
 
     handleMenuToggle = () => {
         this.setState({ showMenu: !this.state.showMenu });
     };
 
+    handleProfileOpen = () => {
+        this.setState({ showProfile: !this.state.showProfile });
+    };
+
+    renderProfile() {
+        return this.state.showProfile === true ? (
+            <Profile
+                visible={this.state.showProfile}
+                handleProfileOpen={this.handleProfileOpen}
+            />
+        ) : null;
+    }
+
     renderSliderMenu() {
         return this.state.showMenu === true ? (
-            <SliderMenu show={this.state.showMenu} size={menuSizes.extended} />
+            <SideMenu
+                show={this.state.showMenu}
+                size={menuSizes.extended}
+                handleMenuClick={this.handleMenuClick}
+            />
         ) : (
-            <SliderMenu show={this.state.showMenu} size={menuSizes.small} />
+            <SideMenu
+                show={this.state.showMenu}
+                size={menuSizes.small}
+                handleMenuClick={this.handleMenuClick}
+            />
         );
     }
 
@@ -54,13 +74,16 @@ class Root extends React.Component {
             <div className="v-Root">
                 <Header
                     handleMenuToggle={this.handleMenuToggle}
+                    handleProfileOpen={this.handleProfileOpen}
                     showMenu={this.state.showMenu}
                     user={user}
                     logout={logout}
+                    resource={this.state.currentResource}
                 />
                 <div className="v-Workarea">
                     {this.renderSliderMenu()}
                     {this.renderWorkAreaContent()}
+                    {this.renderProfile()}
                 </div>
             </div>
         );

@@ -1,12 +1,23 @@
 import Icon from "antd/lib/icon";
 import Menu from "antd/lib/menu";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import React from "react";
 
 import { menuSizes, resources } from "../../common/commons.js";
 import "./style.less";
 
-class SliderMenu extends React.Component {
+class SideMenu extends React.Component {
+    static propTypes = {
+        handleMenuClick: PropTypes.func.isRequired,
+        resource: PropTypes.string,
+        size: PropTypes.string
+    };
+
+    handleClick = item => {
+        const { handleMenuClick } = this.props;
+        handleMenuClick(item.key);
+    };
     renderMenuItem(resource) {
         const { size } = this.props;
         return size === menuSizes.extended ? (
@@ -17,7 +28,7 @@ class SliderMenu extends React.Component {
     renderMenuItems() {
         const menuItems = resources.map((resource, index) => {
             return (
-                <Menu.Item key={index} onClick={() => alert("clicked")}>
+                <Menu.Item key={index} onClick={this.handleClick}>
                     <Icon type={resource.icon} />
                     {this.renderMenuItem(resource)}
                 </Menu.Item>
@@ -38,4 +49,4 @@ class SliderMenu extends React.Component {
     }
 }
 
-export default SliderMenu;
+export default SideMenu;
