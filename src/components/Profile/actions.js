@@ -12,7 +12,7 @@ export const fetchUserInfo = username => async dispatch => {
         // const { data } = await axios.get(`API_URL/users/${username});
         setTimeout(() => {
             dispatch({ type: FETCH_USER_INFO_SUCCESS, payload: userInfo });
-        }, 1500);
+        }, 1000);
     } catch (err) {
         dispatch({
             type: FETCH_USER_INFO_ERROR,

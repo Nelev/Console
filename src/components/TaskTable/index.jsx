@@ -73,7 +73,7 @@ class TaskTable extends React.Component {
                     />
                 );
             case ticketStatus.inProgress:
-                return <Icon type="loading" style={{ color: "#1890ff" }} />;
+                return <Icon type="sync" spin style={{ color: "#1890ff" }} />;
             case ticketStatus.failed:
                 return (
                     <Icon
