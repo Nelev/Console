@@ -4,6 +4,7 @@ import { reducer as form } from "redux-form";
 
 import loginReducer from "./common/Login/reducer";
 import profileReducer from "./components/Profile/reducer";
+import taskTableReducer from "./components/TaskTable/reducer";
 
 export default combineReducers({
     form,
@@ -12,6 +13,7 @@ export default combineReducers({
         routing: routerReducer
     }),
     components: combineReducers({
-        profile: profileReducer
+        profile: profileReducer,
+        dashboard: taskTableReducer
     })
 });

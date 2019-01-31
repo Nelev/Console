@@ -35,7 +35,6 @@ class Profile extends React.Component {
     };
 
     renderProfileContent() {
-        console.log(this.props);
         const { isFetchingUser, userInfo } = this.props;
 
         return isFetchingUser === true ? (

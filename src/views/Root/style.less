@@ -18,12 +18,11 @@
 }
 
 .v-Workarea-Content {
-    background-color: @main-panels-color;
+    display: inline-block;
     width: calc(~"100% - 20%");
     height: calc(~"100% - 20%");
     margin-left: 20px;
     margin-right: 50px;
-    box-shadow: 0 0 3px grey;
 }
 
 @media only screen and (max-width: 620px) {
@@ -32,5 +31,7 @@
     }
     .v-Workarea-Content {
         margin-top: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
 }
