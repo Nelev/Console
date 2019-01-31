@@ -1,4 +1,5 @@
 import Icon from "antd/lib/icon";
+import Row from "antd/lib/row";
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -49,7 +50,7 @@ class Login extends React.Component {
     render() {
         const { children } = this.props;
         return this.props.logged === false ? (
-            <div>
+            <div className="v-Login">
                 {this.renderTitle()}
                 <LoginForm onSubmit={this.handleSubmit} />
                 {this.renderFooter()}

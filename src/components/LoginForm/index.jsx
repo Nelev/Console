@@ -3,7 +3,6 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 import InputField from "../../components/fields/InputField/index.jsx";
-import PasswordField from "../../components/fields/PasswordField/index.jsx";
 
 import "./style.less";
 
@@ -25,27 +24,13 @@ class LoginForm extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <label>Password</label>
-                        <div>
-                            <Field
-                                name="password"
-                                component={PasswordField}
-                                type="text"
-                                placeholder="Password"
-                                {...{
-                                    disabled: true
-                                }}
-                            />
-                        </div>
-                    </div>
-                    <div>
                         <Button
                             className="c-loginButton"
                             type="primary"
                             htmlType="submit"
                             disabled={pristine || submitting}
                         >
-                            Log-In
+                            Enter
                         </Button>
                     </div>
                 </form>
