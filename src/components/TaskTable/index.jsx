@@ -87,7 +87,6 @@ class TaskTable extends React.Component {
         }
     }
     render() {
-        console.log(this.props);
         const { ticketsInfo, isFetchingTickets } = this.props;
         return (
             <div>

@@ -1,3 +1,4 @@
+import Icon from "antd/lib/icon";
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -19,6 +20,28 @@ class Login extends React.Component {
         login(formValues);
     };
 
+    renderFooter() {
+        return (
+            <div className="c-Login-Footer">
+                © 2019{" "}
+                <a
+                    href="https://github.com/Nelev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Nelev
+                </a>
+                , made with
+                <Icon
+                    type="heart"
+                    theme="filled"
+                    style={{ marginLeft: 5, marginRight: 5 }}
+                />
+                in Rome
+            </div>
+        );
+    }
+
     renderTitle() {
         return <div className="c-Login-Title">t-Console</div>;
     }
@@ -29,6 +52,7 @@ class Login extends React.Component {
             <div>
                 {this.renderTitle()}
                 <LoginForm onSubmit={this.handleSubmit} />
+                {this.renderFooter()}
             </div>
         ) : (
             children

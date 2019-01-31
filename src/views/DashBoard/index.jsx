@@ -3,8 +3,9 @@ import Col from "antd/lib/col";
 import Icon from "antd/lib/icon";
 import Row from "antd/lib/row";
 import React from "react";
-import TableTask from "../../components/TaskTable/index.jsx";
+import TaskTable from "../../components/TaskTable/index.jsx";
 import TicketsProgressChart from "../../components/TicketsProgressChart/index.jsx";
+
 import "./style.less";
 
 class DashBoard extends React.Component {
@@ -47,7 +48,7 @@ class DashBoard extends React.Component {
                             hoverable={true}
                             style={{ height: 450, width: 400 }}
                         >
-                            <TableTask />
+                            <TaskTable />
                         </Card>
                     </Col>
                     <Col>

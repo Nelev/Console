@@ -2,6 +2,7 @@ var faker = require("faker");
 
 // fake data exported for test only
 // TO-DO --use a mockserver--
+
 export const userInfo = {
     name: faker.name.firstName(),
     surname: faker.name.lastName(),
@@ -27,3 +28,20 @@ const generateTicketsInfo = () => {
 };
 
 export const ticketsInfo = generateTicketsInfo();
+
+const generateCustomers = () => {
+    const index = Math.floor(Math.random() * 500);
+    const items = [];
+    for (let i = 0; i < index; i++) {
+        items.push({
+            id: i,
+            vatin: faker.finance.iban(),
+            name: faker.company.companyName(),
+            email: faker.internet.email(),
+            activeTickets: Math.floor(Math.random() * 10)
+        });
+    }
+    return items;
+};
+
+export const customers = generateCustomers();
